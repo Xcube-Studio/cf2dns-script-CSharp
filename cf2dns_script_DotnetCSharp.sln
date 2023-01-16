@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cf2dns_script_DotnetCSharp", "cf2dns_script_DotnetCSharp.csproj", "{80765F9A-E52A-4F21-B229-F4C42C70544D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80765F9A-E52A-4F21-B229-F4C42C70544D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80765F9A-E52A-4F21-B229-F4C42C70544D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80765F9A-E52A-4F21-B229-F4C42C70544D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80765F9A-E52A-4F21-B229-F4C42C70544D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D73AFF8B-6AC8-4715-B0E2-1AC94335C5E3}
+	EndGlobalSection
+EndGlobal
