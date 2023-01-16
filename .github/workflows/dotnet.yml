@@ -22,6 +22,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build
+      run: dotnet build --configuration Release
     - name: Run
-      run: ./bin/Debug/net6.0/cf2dns_script_DotnetCSharp.exe {{$sercets.CF2DNS_APIKEY}} {{$sercets.ALICLOUD_KEYID}} {{$sercets.ALICLOUD_SECRET}}
+      run: ./bin/Release/net6.0/cf2dns_script_DotnetCSharp.exe {{$sercets.CF2DNS_APIKEY}} {{$sercets.ALICLOUD_KEYID}} {{$sercets.ALICLOUD_SECRET}}
