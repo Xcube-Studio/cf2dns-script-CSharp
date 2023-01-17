@@ -9,7 +9,7 @@ namespace cf2dns_script_DotnetCSharp
 {
     internal class Program
     {
-        static async void Main(string[] args)  //args[0]-->优选ipkey args[1]-->AliAPIKeyid arg[2]-->AliAPISecret
+        static async Task Main(string[] args)  //args[0]-->优选ipkey args[1]-->AliAPIKeyid arg[2]-->AliAPISecret
         {
             Console.WriteLine("Hello, World! Cf2dns_script_DotnetCSharp with AliCloudDNS");
             
