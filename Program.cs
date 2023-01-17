@@ -9,19 +9,19 @@ namespace cf2dns_script_DotnetCSharp
 {
     internal class Program
     {
-        static void Main(string[] args)  //args[0]-->优选ipkey args[1]-->AliAPIKeyid arg[2]-->AliAPISecret
+        static async void Main(string[] args)  //args[0]-->优选ipkey args[1]-->AliAPIKeyid arg[2]-->AliAPISecret
         {
             Console.WriteLine("Hello, World! Cf2dns_script_DotnetCSharp with AliCloudDNS");
             
             var body =new Utils.IPKey();
             body.key = args[0];
-            var result=Utils.POST("https://api.hostmonit.com/get_optimization_ip", JsonConvert.SerializeObject(body));
+            var result=await Utils.POST("https://api.hostmonit.com/get_optimization_ip", JsonConvert.SerializeObject(body));
             var CloudFlareOptimizationIp = JsonConvert.DeserializeObject<Utils.CloudFlare_Optimization_IP>(result);
             Utils.WriteLog(Utils.LogEnum.Info,"GET result \n"+result);
 
             #region Add Public CloudFlareOptimizationIP 
             body.key = "o1zrmHAF";
-            var public_result=Utils.POST("https://api.hostmonit.com/get_optimization_ip", JsonConvert.SerializeObject(body));
+            var public_result= await Utils.POST("https://api.hostmonit.com/get_optimization_ip", JsonConvert.SerializeObject(body));
             var public_CloudFlareOptimizationIp =
                 JsonConvert.DeserializeObject<Utils.CloudFlare_Optimization_IP>(public_result);
             Utils.WriteLog(Utils.LogEnum.Info,"Get result \n"+public_result);

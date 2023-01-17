@@ -73,8 +73,19 @@ namespace cf2dns_script_DotnetCSharp
             public string key { get; set; }
         }
 
-        public static string POST(string host, string body)
+        private static readonly HttpClient HttpClient = new HttpClient();
+
+        public static async Task<string> POST(string host, string body)
         {
+            using var content = new StringContent(body);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            using var responseMessage = await HttpClient.PostAsync(host, content);
+
+            responseMessage.EnsureSuccessStatusCode();
+
+            return await responseMessage.Content.ReadAsStringAsync();
+
+            /*
             string result = null;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(host);
             request.Method = "POST";
@@ -102,7 +113,7 @@ namespace cf2dns_script_DotnetCSharp
                 result = reader.ReadToEnd();
             }
             return result;
-
+            */
         }
 
         public static void WriteLog(LogEnum e, string body)
