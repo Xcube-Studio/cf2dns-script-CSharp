@@ -16,6 +16,10 @@ namespace cf2dns_script_DotnetCSharp
         {
             [JsonProperty("ip")]
             public string ipnumber { get; set; }
+            [JsonProperty("latency")]
+            public int ping { get; set; }
+            [JsonProperty("speed")]
+            public int speedkbs { get; set; }
         }
 
         public class iplist

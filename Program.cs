@@ -19,6 +19,14 @@ namespace cf2dns_script_DotnetCSharp
             var CloudFlareOptimizationIp = JsonConvert.DeserializeObject<Utils.CloudFlare_Optimization_IP>(result);
             Utils.WriteLog(Utils.LogEnum.Info,"GET result \n"+result);
 
+            #region Sort CloudFlareOptimizationIP
+            CloudFlareOptimizationIp.info.CMCCip.Sort((x,y) => x.ping.CompareTo(y.ping) );
+            CloudFlareOptimizationIp.info.CMCCip.Sort((x,y)=> -x.speedkbs.CompareTo(y.speedkbs));
+            CloudFlareOptimizationIp.info.CTCCip.Sort((x, y) => x.ping.CompareTo(y.ping));
+            CloudFlareOptimizationIp.info.CTCCip.Sort((x, y) => -x.speedkbs.CompareTo(y.speedkbs));
+            CloudFlareOptimizationIp.info.CUCCip.Sort((x, y) => x.ping.CompareTo(y.ping));
+            CloudFlareOptimizationIp.info.CUCCip.Sort((x, y) => -x.speedkbs.CompareTo(y.speedkbs));
+            #endregion
             var provider = new AccessKeyCredentialProvider(args[1], args[2]);
             IClientProfile profile = DefaultProfile.GetProfile("cn-hangzhou");
             DefaultAcsClient client = new DefaultAcsClient(profile, provider);
@@ -34,19 +42,19 @@ namespace cf2dns_script_DotnetCSharp
             }
 
             #region AddDomainRecord
-            foreach (var i in CloudFlareOptimizationIp.info.CMCCip.Take(2).ToList())
+            foreach (var i in CloudFlareOptimizationIp.info.CMCCip.Take(3).ToList())
             {
                 Utils.AddDomainRecord(client,"A","resource","natsurainko.work",i.ipnumber,Utils.LineEnum.mobile);
                 Utils.AddDomainRecord(client,"A","fluentlauncher","natsurainko.work",i.ipnumber,Utils.LineEnum.mobile);
                 Utils.AddDomainRecord(client,"A","www","natsurainko.work",i.ipnumber,Utils.LineEnum.mobile);
             }
-            foreach (var i in CloudFlareOptimizationIp.info.CTCCip.Take(2).ToList())
+            foreach (var i in CloudFlareOptimizationIp.info.CTCCip.Take(3).ToList())
             {
                 Utils.AddDomainRecord(client, "A", "resource", "natsurainko.work", i.ipnumber, Utils.LineEnum.telecom);
                 Utils.AddDomainRecord(client, "A", "fluentlauncher", "natsurainko.work", i.ipnumber, Utils.LineEnum.telecom);
                 Utils.AddDomainRecord(client, "A", "www", "natsurainko.work", i.ipnumber, Utils.LineEnum.telecom);
             }
-            foreach (var i in CloudFlareOptimizationIp.info.CUCCip.Take(2).ToList())
+            foreach (var i in CloudFlareOptimizationIp.info.CUCCip.Take(3).ToList())
             {
                 Utils.AddDomainRecord(client, "A", "resource", "natsurainko.work", i.ipnumber, Utils.LineEnum.unicom);
                 Utils.AddDomainRecord(client, "A", "fluentlauncher", "natsurainko.work", i.ipnumber, Utils.LineEnum.unicom);
