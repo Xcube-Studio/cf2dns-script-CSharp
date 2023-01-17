@@ -113,6 +113,7 @@ namespace cf2dns_script_DotnetCSharp
         public static void AddDomainRecord(DefaultAcsClient client, string Type, string RR,
             string DomainName, string Value, LineEnum line)
         {
+            WriteLog(LogEnum.Info,RR+"."+DomainName+" "+line.ToString()+" "+Value);
             var request = new AddDomainRecordRequest();
             request.Type=Type;
             request.RR=RR;

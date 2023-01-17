@@ -24,6 +24,7 @@ namespace cf2dns_script_DotnetCSharp
             var public_result=Utils.POST("https://api.hostmonit.com/get_optimization_ip", JsonConvert.SerializeObject(body));
             var public_CloudFlareOptimizationIp =
                 JsonConvert.DeserializeObject<Utils.CloudFlare_Optimization_IP>(public_result);
+            Utils.WriteLog(Utils.LogEnum.Info,"Get result \n"+public_result);
             CloudFlareOptimizationIp.info.CMCCip.AddRange(public_CloudFlareOptimizationIp.info.CMCCip.Take(2));
             CloudFlareOptimizationIp.info.CTCCip.AddRange(public_CloudFlareOptimizationIp.info.CTCCip.Take(2));
             CloudFlareOptimizationIp.info.CUCCip.AddRange(public_CloudFlareOptimizationIp.info.CUCCip.Take(2));
