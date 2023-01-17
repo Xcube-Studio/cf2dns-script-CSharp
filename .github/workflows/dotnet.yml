@@ -24,4 +24,4 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release
     - name: Run
-      run: ./bin/Release/net6.0/cf2dns_script_DotnetCSharp ${{sercets.CF2DNS_APIKEY}} ${{sercets.ALICLOUD_KEYID}} ${{sercets.ALICLOUD_SECRET}}
+      run: ./bin/Release/net6.0/cf2dns_script_DotnetCSharp ${{secrets.CF2DNS_APIKEY}} ${{secrets.ALICLOUD_KEYID}} ${{secrets.ALICLOUD_SECRET}}
