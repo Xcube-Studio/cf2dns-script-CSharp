@@ -45,7 +45,7 @@ namespace cf2dns_script_DotnetCSharp
                 JsonConvert.DeserializeObject<Utils.AliDNSRecordsResult>(
                     Utils.DescribeDomainRecords(client, "natsurainko.work"));
             List<Utils.DNSRecord> now = AliDNSResultModel.info.Record
-                .Where(x=>x.Type=="A"&&(x.RR=="fluentlauncher"||x.RR=="resource"||x.RR=="www")).ToList<Utils.DNSRecord>();
+                .Where(x=>x.Type=="A"&&(x.RR=="fluentlauncher"||x.RR=="resource")).ToList<Utils.DNSRecord>();
             foreach (var i in now)
             {
                 Utils.DeleteDomainRecord(client,i.RecordId);
@@ -56,19 +56,19 @@ namespace cf2dns_script_DotnetCSharp
             {
                 Utils.AddDomainRecord(client,"A","resource","natsurainko.work",i.ipnumber,Utils.LineEnum.mobile);
                 Utils.AddDomainRecord(client,"A","fluentlauncher","natsurainko.work",i.ipnumber,Utils.LineEnum.mobile);
-                Utils.AddDomainRecord(client,"A","www","natsurainko.work",i.ipnumber,Utils.LineEnum.mobile);
+                //Utils.AddDomainRecord(client,"A","www","natsurainko.work",i.ipnumber,Utils.LineEnum.mobile);
             }
             foreach (var i in CloudFlareOptimizationIp.info.CTCCip.Take(4).ToList())
             {
                 Utils.AddDomainRecord(client, "A", "resource", "natsurainko.work", i.ipnumber, Utils.LineEnum.telecom);
                 Utils.AddDomainRecord(client, "A", "fluentlauncher", "natsurainko.work", i.ipnumber, Utils.LineEnum.telecom);
-                Utils.AddDomainRecord(client, "A", "www", "natsurainko.work", i.ipnumber, Utils.LineEnum.telecom);
+                //Utils.AddDomainRecord(client, "A", "www", "natsurainko.work", i.ipnumber, Utils.LineEnum.telecom);
             }
             foreach (var i in CloudFlareOptimizationIp.info.CUCCip.Take(4).ToList())
             {
                 Utils.AddDomainRecord(client, "A", "resource", "natsurainko.work", i.ipnumber, Utils.LineEnum.unicom);
                 Utils.AddDomainRecord(client, "A", "fluentlauncher", "natsurainko.work", i.ipnumber, Utils.LineEnum.unicom);
-                Utils.AddDomainRecord(client, "A", "www", "natsurainko.work", i.ipnumber, Utils.LineEnum.unicom);
+                //Utils.AddDomainRecord(client, "A", "www", "natsurainko.work", i.ipnumber, Utils.LineEnum.unicom);
             }
             #endregion
 
